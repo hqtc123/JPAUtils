@@ -14,13 +14,13 @@ import java.util.Map;
 public class Query<M extends Model> {
     protected String tableName = null;  // TODO: select from multi-tables
     protected Class cls = null;
-    protected List<OrderBy> orderBys = new ArrayList<OrderBy>();
+    protected List<OrderBy> orderBys = new ArrayList<>();
     protected Expr condition = Expr.dummy();
     protected String _tableSymbol = null;
     protected int _limit = -1;
     protected int _offset = -1;
-    protected Map<Integer, Object> indexParameters = new HashMap<Integer, Object>();
-    protected Map<String, Object> mapParameters = new HashMap<String, Object>();
+    protected Map<Integer, Object> indexParameters = new HashMap<>();
+    protected Map<String, Object> mapParameters = new HashMap<>();
 
     public String getTableSymbol() {
         if (_tableSymbol == null) {
@@ -146,12 +146,7 @@ public class Query<M extends Model> {
 
     public String getOrderByString() {
         final Query _this = this;
-        List<String> orderByStrs = ListUtil.map(this.orderBys, new Function<OrderBy, String>() {
-            @Override
-            public String apply(OrderBy orderBy) {
-                return orderBy != null ? orderBy.toOrderByString(_this) : null;
-            }
-        });
+        List<String> orderByStrs = ListUtil.map(this.orderBys, orderBy -> orderBy != null ? orderBy.toOrderByString(_this) : null);
         return StringUtil.join(orderByStrs, ",");
     }
 
