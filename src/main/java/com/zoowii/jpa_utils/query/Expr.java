@@ -17,7 +17,7 @@ public class Expr {
     public static final String AND = "and";
     public static final String LIKE = "like";
     protected String op = null;
-    protected List<Object> items = new ArrayList<Object>();
+    protected List<Object> items = new ArrayList<>();
 
     public Expr() {
     }
@@ -30,7 +30,7 @@ public class Expr {
     public static class EmptyExpr extends Expr {
         @Override
         public Map<String, Object> toQueryString(Query query) {
-            return ListUtil.hashmap("query",
+            return ListUtil.hashMap("query",
                     "1=1", "bindings", new ParameterBindings());
         }
     }
@@ -119,6 +119,6 @@ public class Expr {
 //        List<Object> bindings = ListUtil.seq((Object) items.get(1));
         ParameterBindings bindings = new ParameterBindings();
         bindings.addIndexBinding(items.get(1));
-        return ListUtil.hashmap("query", queryStr, "bindings", bindings);
+        return ListUtil.hashMap("query", queryStr, "bindings", bindings);
     }
 }

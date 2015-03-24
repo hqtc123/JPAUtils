@@ -23,6 +23,6 @@ public class AndExpr extends Expr {
         ParameterBindings bindings = new ParameterBindings();
         bindings = bindings.addAll((ParameterBindings) leftQuery.get("bindings"));
         bindings = bindings.addAll((ParameterBindings) rightQuery.get("bindings"));
-        return ListUtil.hashmap("query", queryStr, "bindings", bindings);
+        return ListUtil.hashMap("query", queryStr, "bindings", bindings);
     }
 }
